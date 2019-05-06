@@ -1,8 +1,7 @@
 #main-container {
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
 }
 
 #main-container form{
@@ -10,6 +9,8 @@
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin: 0 350px;
 }
 
 #main-container form input{
@@ -36,4 +37,32 @@
 
 #main-container form button:hover{
     opacity: 0.8;
+}
+
+#title-list{
+    width: 250px;
+    list-style: none;
+
+}
+
+#title-list li{ 
+    padding: 8px;
+    margin-top: 8px;
+    text-align: left;
+    padding-top: 5px;
+    border-bottom: 1px solid #999;
+
+}
+
+#title-list li:hover{
+    opacity: 0.8;
+}
+
+#title-list a {
+    color: rgb(24, 23, 23);
+    text-decoration: none;
+}
+
+#title-list h1{
+    font-size: 21px;
 }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import api from '../../service/api';
+// import { MdDelete } from 'react-icons/md';
 import './style.css';
 
 import logo from '../../assets/logo.svg';
 
+
 export default class Main extends Component {
   state = {
-    newPasta: '',
-    pastas: {}
+    pastas: [],
+    newPasta: ''
   };
 
   async componentDidMount(){
@@ -15,7 +17,7 @@ export default class Main extends Component {
     const response = await api.get(`boxes`)
     this.setState({ pastas: response.data })
 
-}
+  }
 
   
   handleSubmit = async e => {
@@ -33,28 +35,20 @@ export default class Main extends Component {
   }
 
 
+
   render() {
-    var title = [];
-    if(this.state.pastas.length > 0){
-      this.state.pastas.forEach(titles => {
-      
-        title.push(titles);
-
-      })
-    }
-
-
     return(
         <div id="main-container" >
 
-            <ul>
-            { title.map(title => (
-                <a href={"/pasta/"+ title._id}>
-                    <li>
-                      {title.title}
+            <ul id="title-list">
+              <h1>Minhas pastas</h1>
+            { this.state.pastas.map(title => (
+                    <li key={title._id}>
+                      <a href={"/pasta/"+ title._id}>
+                        <strong>{title.title}</strong>
+                      </a>
                     </li>
-               </a>
-            )) }
+            ))}
 
             </ul>
             <form onSubmit={this.handleSubmit}>
